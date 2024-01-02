@@ -16,11 +16,27 @@
           <div class="card-body">
             <div class="row align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-uppercase mb-1">Data Obat</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">30</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Data Supplier</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $supplier }}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-calendar fa-2x text-primary"></i>
+                <i class="fas fa-solid fa-user fa-2x text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Earnings (Monthly) Card Example -->
+       <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Data Obat</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $medicine }}</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-solid fa-tablets fa-2x text-primary"></i>
               </div>
             </div>
           </div>
@@ -32,11 +48,11 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-uppercase mb-1">Data Obat Terjual</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Data Obat Masuk</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $drugs }}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                <i class="fas fa-fw fa-window-maximize fa-2x text-info"></i>
               </div>
             </div>
           </div>
@@ -48,11 +64,11 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-uppercase mb-1">Laporan Stock Obat</div>
-                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Data Obat Keluar</div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $transaction }}</div>
               </div>
               <div class="col-auto">
-                <i class="fab fa-fw fa-wpforms fa-2x text-info"></i>
+                <i class="fas fa-shopping-cart fa-2x text-success"></i>
               </div>
             </div>
           </div>
@@ -64,8 +80,24 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-uppercase mb-1">Laporan Penjualan Obat</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Laporan Obat Masuk</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $drugs }}</div>
+              </div>
+              <div class="col-auto">
+                <i class="fab fa-fw fa-wpforms fa-2x text-danger"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Pending Requests Card Example -->
+       <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Laporan Obat Keluar</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $drugs }}</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-fw fa-columns fa-2x text-warning"></i>

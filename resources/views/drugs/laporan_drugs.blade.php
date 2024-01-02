@@ -29,11 +29,7 @@ Laporan Data Obat Masuk {{ $year }}
                           <td>{{ $ob->code }}</td>
                           <td>{{ $ob->supplier->medicine }}</td>
                           <td>
-                            @if ($ob->stock == 0)
-                            <a href="" class="btn btn-danger">Stock Habis</a>
-                            @else
-                              {{ $ob->stock }}
-                            @endif
+                            {{ $ob->snapshot_stock }}
                           </td>
                           <td>{{ $ob->medicine->kind }}</td>
                           <td>{{ $ob->production_date }}</td>

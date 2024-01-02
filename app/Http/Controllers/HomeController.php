@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Drugs;
+use App\Models\Medicine;
+use App\Models\Supplier;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $supplier = Supplier::count();
+        $drugs = Drugs::count();
+        $medicine = Medicine::count();
+        $transaction = Transaction::count();
+        return view('dashboard', compact('supplier','drugs','medicine','transaction'));
     }
 
 }

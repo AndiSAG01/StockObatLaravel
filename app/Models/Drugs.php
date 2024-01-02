@@ -21,9 +21,9 @@ class Drugs extends Model
         'expiration_date',
     ];
 
-    
 
-   
+
+
     public function getAutoNumberOptions()
     {
         return [
@@ -34,11 +34,11 @@ class Drugs extends Model
         ];
     }
 
-   /**
-    * Get the medicine that owns the Drugs
-    *
-    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-    */
+    /**
+     * Get the medicine that owns the Drugs
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
@@ -48,9 +48,18 @@ class Drugs extends Model
     {
         return $this->belongsTo(Medicine::class);
     }
-    
+
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function saveSnapshotStock()
+    {
+        // Buat snapshot hanya jika belum pernah disimpan sebelumnya
+        if ($this->snapshot_stock === null) {
+            $this->snapshot_stock = $this->stock;
+            $this->save();
+        }
     }
 }

@@ -17,6 +17,8 @@ class CreateDrugsTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('stock');
+            $table->integer('snapshot_stock')->nullable();
+            $table->integer('current_stock')->nullable();
            $table->foreignId('supplier_id')->constrained()->cascadeOnDelete();
            $table->foreignId('medicine_id')->constrained()->cascadeOnDelete();
             $table->string('production_date');
