@@ -61,6 +61,24 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="isAdmin">Role:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="isAdmin" id="pemilik" value="pemilik" {{ old('isAdmin') == 'pemilik' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="pemilik">Pemilik</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="isAdmin" id="pegawai" value="pegawai" {{ old('isAdmin') == 'pegawai' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="pegawai">Pegawai</label>
+                            </div>
+                                @error('isAdmin')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

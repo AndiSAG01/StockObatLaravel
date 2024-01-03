@@ -6,6 +6,8 @@ use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\MedicinesController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,15 @@ Auth::routes();
 
 Route::middleware(['auth', 'admin'])->group(function () {
    Route::get('/', [HomeController::class,'index'])->name('home');
+
+   #user
+   Route::get('/user', [UserController::class,'index'])->name('user.index');
+   Route::get('/user/create', [UserController::class,'create'])->name('user.create');
+   Route::post('/user/store', [UserController::class,'store'])->name('user.store');
+   Route::get('/user/edit/{id}', [UserController::class,'edit'])->name('user.edit');
+   Route::post('/user/update/{id}', [UserController::class,'update'])->name('user.update');
+   Route::delete('/user/delete/{id}', [UserController::class,'delete'])->name('user.delete');
+   Route::post('/logout', [HomeController::class,'logout'])->name('user.logout');
    
    #medicines
    Route::get('/medicines', [MedicineController::class,'index'])->name('medicines.index');
@@ -61,6 +72,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
    Route::get('/transaction/edit/{id}', [TransactionController::class,'edit'])->name('transaction.edit');
    Route::post('/transaction/update/{id}', [TransactionController::class,'update'])->name('transaction.update');
    Route::delete('/transaction/delete/{id}', [TransactionController::class,'delete'])->name('transaction.delete');
+   Route::get('/transaction/laporan', [TransactionController::class,'laporan'])->name('transaction.laporan');
+
   
    
 });

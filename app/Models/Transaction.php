@@ -36,7 +36,6 @@ class Transaction extends Model
     }
 
 
-
     public function getAutoNumberOptions()
     {
         return [

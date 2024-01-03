@@ -13,8 +13,15 @@
    </li>
    <hr class="sidebar-divider">
   <li class="nav-item">
-   <a class="nav-link" href="{{ route('supplier.index') }}">
+   <a class="nav-link" href="{{ route('user.index') }}">
     <i class="fas fa-solid fa-user"></i>
+     <span>Data User</span>
+   </a>
+ </li>
+   <hr class="sidebar-divider">
+  <li class="nav-item">
+   <a class="nav-link" href="{{ route('supplier.index') }}">
+    <i class="fas fa-solid fa-users"></i>
      <span>Data Supplier</span>
    </a>
  </li>
@@ -48,7 +55,7 @@
    </li>
    <hr class="sidebar-divider">
    <li class="nav-item">
-     <a class="nav-link" href="ui-colors.html">
+     <a class="nav-link" href="{{ route('transaction.laporan') }}">
        <i class="fas fa-fw fa-columns"></i>
        <span>Laporan Obat Keluar</span>
      </a>

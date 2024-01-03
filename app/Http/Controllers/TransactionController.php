@@ -6,6 +6,7 @@ use App\Models\Drugs;
 use App\Models\Medicine;
 use App\Models\Supplier;
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -132,5 +133,12 @@ class TransactionController extends Controller
         $transactions = Transaction::findOrFail($id);
         $transactions->delete();
         return redirect()->route('transaction.index')->with('danger','Data Obat Keluar Berhasil Di Hapus');
+    }
+
+    public function laporan()
+    {
+        $transactions = Transaction::all();
+        $year = Carbon::now()->format('M-Y');
+        return view('transaction.laporan_drugs_out', compact('transactions','year'));
     }
 }

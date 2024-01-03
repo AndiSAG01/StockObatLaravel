@@ -38,7 +38,7 @@ class DrugsController extends Controller
        Drugs::create($validatedData);
        
 
-       return redirect()->route('drugs.index')->with('success', 'Data obat Berhasil Ditambahkan');
+       return redirect()->route('drugs.index')->with('success', 'Data Masuk obat Berhasil Ditambahkan');
    }
 
    public function edit($id)
@@ -61,7 +61,7 @@ class DrugsController extends Controller
      ]);
      Drugs::find($id)->update($validatedData);
      
-     return redirect()->route('drugs.index')->with('success', 'Data obat Berhasil Diubah');
+     return redirect()->route('drugs.index')->with('success', 'Data Masuk obat Berhasil Diubah');
 
    }
    public function delete($id)
@@ -71,7 +71,7 @@ class DrugsController extends Controller
 
         return redirect()->back()->with(
             'danger',
-            'Data obat Telah Di hapus'
+            'Data Masuk obat Telah Di hapus'
         );
     }
 

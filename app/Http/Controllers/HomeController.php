@@ -7,6 +7,7 @@ use App\Models\Medicine;
 use App\Models\Supplier;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,13 @@ class HomeController extends Controller
         $medicine = Medicine::count();
         $transaction = Transaction::count();
         return view('dashboard', compact('supplier','drugs','medicine','transaction'));
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('/')->with('success', 'Logout berhasil.');
     }
 
 }
