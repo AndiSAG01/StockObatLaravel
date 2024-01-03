@@ -51,7 +51,7 @@ class Drugs extends Model
 
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class, 'drug_id');
     }
 
     public function saveSnapshotStock()
@@ -61,5 +61,6 @@ class Drugs extends Model
             $this->snapshot_stock = $this->stock;
             $this->save();
         }
+        
     }
 }

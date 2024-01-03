@@ -11,7 +11,7 @@ Laporan Data Obat Masuk {{ $year }}
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table id="dataTable" class="table align-items-center table-flush table-hover" id="dataTableHover">
+            <table  class="table align-items-center table-flush table-hover" id="dataTableHover">
                 <thead class="thead-light">
                     <tr>
                         <th>No</th>
@@ -29,12 +29,11 @@ Laporan Data Obat Masuk {{ $year }}
                         <td>{{ ++$no }}</td>
                         <td>{{ $ob->code }}</td>
                         <td>{{ $ob->supplier->medicine }}</td>
-                        <td>
-                            {{ $ob->snapshot_stock ?? 'N/A' }}
-                        </td>
+                        <td>{{ $ob->transactions->sum('quantity_sell') + $ob->stock  }}</td>
                         <td>{{ $ob->medicine->kind }}</td>
                         <td>{{ $ob->production_date }}</td>
                         <td>{{ $ob->expiration_date }}</td>
+                        
                     </tr>
                     @endforeach
                 </tbody>

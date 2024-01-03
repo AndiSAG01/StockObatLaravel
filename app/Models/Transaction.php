@@ -22,7 +22,7 @@ class Transaction extends Model
 
     public function drug()
     {
-        return $this->belongsTo(Drugs::class);
+        return $this->belongsTo(Drugs::class, 'drug_id');
     }
 
     public function supplier(): BelongsTo

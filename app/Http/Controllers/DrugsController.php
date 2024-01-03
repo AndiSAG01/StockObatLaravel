@@ -76,17 +76,12 @@ class DrugsController extends Controller
     }
 
     public function laporan()
-    {
-        $drugs = Drugs::get();
-    
-        // Simpan snapshot stok sebelum membuat laporan
-        foreach ($drugs as $drug) {
-            $drug->saveSnapshotStock();
-        }
-    
-        $year = Carbon::now()->format('M-Y');
-        return view('drugs.laporan_drugs', compact('drugs', 'year'));
-    }
+{
+    $drugs = Drugs::get();
+    $year = Carbon::now()->format('M-Y');
+
+    return view('drugs.laporan_drugs', compact('drugs', 'year'));
+}
     
 
 }

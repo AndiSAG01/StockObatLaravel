@@ -19,8 +19,11 @@ class isAdmin
     {
         if (Auth::user() &&  Auth::user()->isAdmin == true) {
              return $next($request);
+        }else{
+            return back()->with('error','Opps, You\'re not Admin');
         }
 
-        return back()->with('error','Opps, You\'re not Admin');
+        
     }
+
 }

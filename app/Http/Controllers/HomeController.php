@@ -39,7 +39,7 @@ class HomeController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('/')->with('success', 'Logout berhasil.');
+        return redirect('/login')->with('success', 'Logout berhasil.');
     }
 
 }

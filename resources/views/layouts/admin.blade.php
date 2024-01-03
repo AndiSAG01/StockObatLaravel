@@ -38,10 +38,10 @@
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="/assets/img/boy.png" style="max-width: 60px">
                 <span class="ml-2 d-none d-lg-inline text-white small">
-                  @if (Auth::check() == 1)
-                    Pemilik
-                  @else
-                    Pegawai
+                  @if (Auth()->user()->isAdmin = 1)
+                  Pegawai
+                  @elseif (Auth()->user()->isAdmin = 0)
+                    pemilik
                   @endif
                 </span>
               </a>
