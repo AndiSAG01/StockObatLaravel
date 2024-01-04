@@ -48,7 +48,7 @@
                 </div>
                 <div class="form-group mb-4">
                     <label for="quantity_sell">Jumlah Keluar</label>
-                    <input type="number" class="form-control" name="quantity_sell" value="{{ old('quantity_sell', $transactions -> quantity_sell) }}">
+                    <input type="number" class="form-control" name="quantity_sell" value="{{ old('quantity_sell', $transactions -> quantity_sell) }}" disabled>
                 </div>
                 <div class="form-group mb-4">
                     <label for="drug_id">Jenis</label>

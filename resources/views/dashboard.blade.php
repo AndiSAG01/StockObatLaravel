@@ -20,7 +20,9 @@
                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $supplier }}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-solid fa-user fa-2x text-primary"></i>
+                <a href="{{ route('supplier.index') }}">
+                  <i class="fas fa-solid fa-user fa-2x text-primary"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -36,7 +38,9 @@
                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $medicine }}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-solid fa-tablets fa-2x text-primary"></i>
+                <a href="{{ route('medicines.index') }}">
+                  <i class="fas fa-solid fa-tablets fa-2x text-primary"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -52,7 +56,9 @@
                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $drugs }}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-fw fa-window-maximize fa-2x text-info"></i>
+                <a href="{{ route('drugs.index') }}">
+                  <i class="fas fa-fw fa-window-maximize fa-2x text-info"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -68,7 +74,9 @@
                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $transaction }}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                <a href="{{ route('transaction.index') }}">
+                  <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -84,7 +92,9 @@
                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $drugs }}</div>
               </div>
               <div class="col-auto">
-                <i class="fab fa-fw fa-wpforms fa-2x text-danger"></i>
+                <a href="{{ route('drugs.laporan') }}">
+                  <i class="fab fa-fw fa-wpforms fa-2x text-danger"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -100,7 +110,9 @@
                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $drugs }}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-fw fa-columns fa-2x text-warning"></i>
+                <a href="{{ route('transaction.laporan') }}">
+                  <i class="fas fa-fw fa-columns fa-2x text-warning"></i>
+                </a>
               </div>
             </div>
           </div>

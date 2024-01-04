@@ -90,43 +90,18 @@ class TransactionController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'code_transaction' => 'string|max:10',
             'date' => 'required|string|max:100',
             'quantity_sell' => 'required|string|max:4',
             'drug_id' => '|exists:drugs,id',
         ]);
-        Transaction::findOrFail($id)->update($request->all());
+        Transaction::find($id)->update($validatedData);
 
-        $drug = Drugs::find($request['drug_id']);
-
-        if ($drug) {
-            // Check if the stock is already 0
-            if ($drug->stock === 0) {
-                return redirect()->route('transaction.index')->with('info', 'Stock obat ' . $drug->name . ' telah habis.');
-            }
-            
-
-            // Check if the requested quantity is greater than the available stock
-            if ($request['quantity_sell'] > $drug->stock) {
-                return redirect()->route('transaction.index')->with('info', 'Stock Obat ' . $drug->name . 'Tidak Cukup .'  );
-            }
-
-            // Decrease the stock in the "drugs" table
-            $drug->stock -= $request['quantity_sell'];
-
-            // Check if the stock is now 0
-            if ($drug->stock === -1) {
-                // Set a flag in the drug model
-                $drug->stock = true;
-            }
-
-            // Save the changes to the drug
-            $drug->save();
 
         return redirect()->route('transaction.index')->with('success','Data Obat Keluar Berhasil Di Edit');
     }
-}
+
 
     public function delete($id)
     {

@@ -11,7 +11,7 @@ Laporan Data Obat Keluar {{ $year }}
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table id="example" class="table align-items-center table-flush table-hover" id="dataTableHover">
+            <table id="dataTable" class="table align-items-center table-flush table-hover" id="dataTableHover">
                 <thead class="thead-light">
                   <tr>
                     <th>No</th>

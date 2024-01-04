@@ -11,7 +11,7 @@ Laporan Data Obat Masuk {{ $year }}
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table  class="table align-items-center table-flush table-hover" id="dataTableHover">
+            <table id="dataTable" class="table align-items-center table-flush table-hover" id="dataTableHover">
                 <thead class="thead-light">
                     <tr>
                         <th>No</th>
@@ -33,7 +33,6 @@ Laporan Data Obat Masuk {{ $year }}
                         <td>{{ $ob->medicine->kind }}</td>
                         <td>{{ $ob->production_date }}</td>
                         <td>{{ $ob->expiration_date }}</td>
-                        
                     </tr>
                     @endforeach
                 </tbody>
