@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="card-header text-white" style="background-color: blue">
         <b>
-            Form Edit Data Masuk Obat
+            Form Edit Data Supplier
         </b>
     </div>
     <div class="card-body text-dark">
@@ -23,10 +23,10 @@
                 <label for="telphone">Telphone</label>
                 <input type="number" class="form-control" name="telphone" value="{{ old('telphone', $supplier -> telphone) }}">
             </div>
-            <div class="form-group mb-4">
+            {{-- <div class="form-group mb-4">
                 <label for="medicine">Obat</label>
                 <input type="text" class="form-control" name="medicine" value="{{ old('medicine', $supplier -> medicine) }}">
-            </div>
+            </div> --}}
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </div>

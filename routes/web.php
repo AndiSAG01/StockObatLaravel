@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\DrugsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +40,28 @@ Route::middleware(['auth'])->group(function () {
    Route::delete('/user/delete/{id}', [UserController::class,'delete'])->name('user.delete');
    Route::post('/logout', [HomeController::class,'logout'])->name('user.logout');
    
+   #type
+   Route::get('/type', [TypeController::class,'index'])->name('type.index');
+   Route::get('/type/create', [TypeController::class,'create'])->name('type.create');
+   Route::post('/type/store', [TypeController::class,'store'])->name('type.store');
+   Route::get('/type/edit/{id}', [TypeController::class,'edit'])->name('type.edit');
+   Route::post('/type/update/{id}', [TypeController::class,'update'])->name('type.update');
+   Route::delete('/type/delete/{id}', [TypeController::class,'delete'])->name('type.delete');
+   #satuan
+   Route::get('/satuan', [SatuanController::class,'index'])->name('satuan.index');
+   Route::get('/satuan/create', [SatuanController::class,'create'])->name('satuan.create');
+   Route::post('/satuan/store', [SatuanController::class,'store'])->name('satuan.store');
+   Route::get('/satuan/edit/{id}', [SatuanController::class,'edit'])->name('satuan.edit');
+   Route::post('/satuan/update/{id}', [SatuanController::class,'update'])->name('satuan.update');
+   Route::delete('/satuan/delete/{id}', [SatuanController::class,'delete'])->name('satuan.delete');
+   #Brand
+   Route::get('/brand', [BrandController::class,'index'])->name('brand.index');
+   Route::get('/brand/create', [BrandController::class,'create'])->name('brand.create');
+   Route::post('/brand/store', [BrandController::class,'store'])->name('brand.store');
+   Route::get('/brand/edit/{id}', [BrandController::class,'edit'])->name('brand.edit');
+   Route::post('/brand/update/{id}', [BrandController::class,'update'])->name('brand.update');
+   Route::delete('/brand/delete/{id}', [BrandController::class,'delete'])->name('brand.delete');
+    
    #medicines
    Route::get('/medicines', [MedicineController::class,'index'])->name('medicines.index');
    Route::get('/medicines/create', [MedicineController::class,'create'])->name('medicines.create');
@@ -53,6 +78,7 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/drugs/update/{id}', [DrugsController::class,'update'])->name('drugs.update');
    Route::delete('/drugs/delete/{id}', [DrugsController::class,'delete'])->name('drugs.delete');
    Route::get('/Drugs', [DrugsController::class,'laporan'])->name('drugs.laporan');
+   Route::get('/get-medicine-name/{code}', [DrugsController::class, 'getMedicineName']);
 
    #supplier
    Route::get('/supplier', [SupplierController::class,'index'])->name('supplier.index');

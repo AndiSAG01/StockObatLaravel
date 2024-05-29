@@ -74,7 +74,7 @@ class TransactionController extends Controller
             }
         }
 
-        return redirect()->route('transaction.index')->with('success', 'Data obat berhasil ditambahkan');
+        return redirect()->route('transaction.index')->with('success', 'Data obat Keluar berhasil ditambahkan');
     }
 
 

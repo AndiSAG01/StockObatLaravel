@@ -35,8 +35,8 @@
                                         @csrf
                                         <div class="form-group">
                                             <label for="email"
-                                                class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-                                            <input id="email" type="email"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('User Name') }}</label>
+                                            <input id="email" type="text"
                                                 class="form-control @error('email') is-invalid @enderror" name="email"
                                                 value="{{ old('email') }}" required autocomplete="email" autofocus>
                                             @error('email')

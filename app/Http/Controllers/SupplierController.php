@@ -25,9 +25,13 @@ class SupplierController extends Controller
          'name' => 'required|string|max:100',
          'address' => 'required|string|max:100',
          'telphone' => 'required|string|max:20',
-         'medicine' => 'required|string|max:100',
+         // 'medicine' => 'required|array',
+         // 'medicine.*' => 'string|max:100',
        ]);
 
+       $medicineString = implode(',',$validatedData['medicine']);
+       $validatedData['medicine'] = $medicineString;
+       
        Supplier::create($validatedData);
        
 
@@ -46,13 +50,13 @@ class SupplierController extends Controller
         'name' => 'required|string|max:100',
         'address' => 'required|string|max:100',
         'telphone' => 'required|string|max:20',
-        'medicine' => 'required|string|max:100',
+      //   'medicine' => 'required|string|max:100',
      ]);
      $Supplier = Supplier::findOrFail($id);
      $Supplier->name = $request->name;
      $Supplier->address= $request->address;
      $Supplier->telphone = $request->telphone;
-     $Supplier->medicine = $request->medicine;
+   //   $Supplier->medicine = $request->medicine;
 
      $Supplier->save();
      

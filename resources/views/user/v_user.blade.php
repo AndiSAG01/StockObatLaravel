@@ -3,13 +3,7 @@
 @section('content')
 
 <div class="col-lg-12">
-  @if ($message = Session::get('success'))
-<div class="alert alert-primary alert-block">
-    <strong>{{ $message }}</strong>
-</div>
-@elseif ($errors->all())
-<div class="alert alert-danger fw-bold" role="alert">Data is invalid 😣</div>
-@endif
+  <x-alert></x-alert>
     <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">DATA USER</h6>
@@ -21,7 +15,7 @@
             <tr>
               <th>No</th>
               <th>Nama User</th>
-              <th>Email</th>
+              <th>Username</th>
               <th>Role</th>
               <th>Aksi</th>
 

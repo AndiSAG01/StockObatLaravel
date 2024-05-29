@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.2/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
+
 </head>
 
 <body id="page-top">
@@ -158,7 +160,57 @@
                 });
             });
         </script>
+        <script>
+            var formfield = document.getElementById('formfield');
+
+            function addMedicineField() {
+                var container = document.getElementById("medicine-container");
+                var div = document.createElement("div");
+                div.classList.add("form-group", "mb-4");
+                div.innerHTML = '<label for="medicine">Obat</label><input type="text" name="medicine[]" class="form-control">';
+                container.appendChild(div);
+            }
+
+            function removeMedicineField() {
+                var container = document.getElementById("medicine-container");
+                var children = container.getElementsByClassName("form-group");
+                if (children.length > 1) {
+                    container.removeChild(children[children.length - 1]);
+                }
+            }
+        </script>
         @include('components.component-stock')
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#medicine_code').change(function() {
+                    var selectedCode = $(this).val();
+                    if (selectedCode) {
+                        $.ajax({
+                            url: '/get-medicine-name/' + selectedCode,
+                            type: 'GET',
+                            success: function(response) {
+                                if (response) {
+                                    $('#medicine_name').empty();
+                                    $('#medicine_name').removeAttr('disabled');
+                                    $.each(response, function(key, value) {
+                                        $('#medicine_name').append('<option value="' + key + '">' + value + '</option>');
+                                    });
+                                } else {
+                                    $('#medicine_name').empty();
+                                    $('#medicine_name').attr('disabled', 'disabled');
+                                    $('#medicine_name').append('<option value="">No Name Found</option>');
+                                }
+                            }
+                        });
+                    } else {
+                        $('#medicine_name').empty();
+                        $('#medicine_name').attr('disabled', 'disabled');
+                        $('#medicine_name').append('<option value="">Pilih Kode Obat terlebih dahulu</option>');
+                    }
+                });
+            });
+        </script>
 </body>
 
 

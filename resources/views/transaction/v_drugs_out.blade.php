@@ -3,18 +3,7 @@
 @section('content')
 
 <div class="col-lg-12">
-  @if ($message = Session::get('success'))
-    <div class="alert alert-primary alert-block">
-        <strong>{{ $message }}</strong>
-    </div>
-    @elseif  ($message = Session::get('danger'))
-    <div class="alert alert-primary alert-block">
-        <strong>{{ $message }}</strong>
-    </div>
-  @elseif ($errors->all())
-    <div class="alert alert-danger fw-bold" role="alert">Data is invalid 😣</div>
-  @endif
-
+  <x-alert></x-alert>
   {{-- Display any danger messages from the controller --}}
   @if($dangerMessage = Session::get('info'))
     <div class="alert alert-danger" role="alert">
@@ -33,11 +22,10 @@
           <tr>
             <th>No</th>
             <th>Kode Obat Keluar</th>
-            <th>Tanggal</th>
-            <th>Kode Obat</th>
+            <th>Tanggal Keluar</th>
+            <th>Kode Obat Masuk</th>
             <th>Nama Obat</th>
             <th>Jumlah Keluar</th>
-            <th>Jenis Obat</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -48,9 +36,8 @@
               <td>{{ $ts->code_transaction }}</td>
               <td>{{ $ts->date }}</td>
               <td>{{ $ts->drug->code }}</td>
-              <td>{{ $ts->supplier->medicine }}</td>
+              <td>{{ $ts }}</td>
               <td>{{ $ts->quantity_sell }}</td>
-              <td>{{ $ts->medicine->kind }}</td>
               <td>
                 <a href="{{ route('transaction.edit', $ts->id) }}" class="btn btn-warning btn-sm">Edit</a>
                 <form id="deleteForm" class="d-inline" action="{{ route('transaction.delete',$ts->id) }}" method="post">

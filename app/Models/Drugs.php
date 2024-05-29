@@ -13,10 +13,10 @@ class Drugs extends Model
     use HasFactory;
     use AutoNumberTrait;
     protected $fillable = [
+        'date',
         'code',
         'stock',
         'medicine_id',
-        'supplier_id',
         'production_date',
         'expiration_date',
     ];
@@ -34,15 +34,6 @@ class Drugs extends Model
         ];
     }
 
-    /**
-     * Get the medicine that owns the Drugs
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function supplier()
-    {
-        return $this->belongsTo(Supplier::class);
-    }
 
     public function medicine()
     {
@@ -63,4 +54,9 @@ class Drugs extends Model
         }
         
     }
+    
+
+    
+
+
 }

@@ -57,11 +57,20 @@
         <hr class="sidebar-divider">
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('medicines.index') }}">
-                <i class="fas fa-solid fa-tablets"></i>
-                <span>Data Obat</span>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+              aria-controls="collapseTable">
+              <i class="fas fa-fw fa-table"></i>
+              <span>Manajeman Obat</span>
             </a>
-        </li>
+            <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('type.index') }}">Jenis</a>
+                <a class="collapse-item" href="{{ route('satuan.index') }}">Satuan</a>
+                <a class="collapse-item" href="{{ route('brand.index') }}">Merek</a>
+                <a class="collapse-item" href="{{ route('medicines.index') }}">Data Obat</a>
+              </div>
+            </div>
+          </li>
 
         <hr class="sidebar-divider">
 

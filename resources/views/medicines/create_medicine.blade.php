@@ -12,7 +12,7 @@
     @elseif ($errors->all())
         <div class="alert alert-danger fw-bold" role="alert">Data is invalid 😣</div>
     @endif
-    <div class="container-fluid">
+       <div class="container-fluid">
         <div class="card-header text-white" style="background-color: blue">
             <b>
                 Form Tambah Data Obat
@@ -21,29 +21,54 @@
         <div class="card-body text-dark">
             <form action="{{ route('medicines.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
+                <input type="text" name="kode" hidden>
+                <div class="form-group mb-4"> 
+                    <label for="">Nama Obat</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
                 <div class="form-group mb-4">
                     <label for="supplier_id">Pilih Supplier:</label>
                     <select name="supplier_id" id="supplier_id" class="form-control">
+                        <option value="">==Pilih Supplier==</option>
                         @foreach ($suppliers as $supplier)
-                            <option value="{{ $supplier->id }}">{{ $supplier->id }}. {{ $supplier->name }}</option>
+                            <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group mb-4">
-                    <label for="code">Nama Obat</label>
-                    <select name="supplier_id" id="code" class="form-control">
-                        @foreach ($medicine as $md)
-                            <option value="{{ $md->id }}">{{ $md->id }}. {{ $md->medicine }}</option>
+                    <label for="code">Merek</label>
+                    <select name="brand_id" id="code" class="form-control">
+                        <option value="">==Pilih Merek==</option>
+                        @foreach ($brands as $md)
+                            <option value="{{ $md->id }}">{{ $md->name }}</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="code">Jenis</label>
+                    <select name="type_id" id="code" class="form-control">
+                        <option value="">==Pilih Jenis Obat==</option>
+                        @foreach ($types as $md)
+                            <option value="{{ $md->id }}">{{ $md->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="code">Satuan</label>
+                    <select name="satuan_id" id="code" class="form-control">
+                        <option value="">==Pilih Satuan Obat==</option>
+                        @foreach ($satuans as $md)
+                            <option value="{{ $md->id }}">{{ $md->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="description">Jumlah Stok</label>
+                    <input type="number" name="stok" class="form-control">
                 </div>
                 <div class="form-group mb-4">
                     <label for="description">Deskripsi</label>
                     <input type="text" name="description" class="form-control">
-                </div>
-                <div class="form-group mb-4">
-                    <label for="kind">Jenis Obat</label>
-                    <input type="text" name="kind" class="form-control">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Simpan</button>

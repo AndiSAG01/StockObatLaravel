@@ -18,16 +18,23 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'Pemilik',
-                'email' => 'pemilik@gmail.com',
+                'email' => 'Owner2024',
                 'password' => Hash::make('12345678'),
                 'isAdmin' => true
             ],
             [
                 'name' => 'Pegawai',
-                'email' => 'pegawai@gmail.com',
+                'email' => 'Pegawai2024',
                 'password' => Hash::make('12345678'),
                 'isAdmin' => false
             ]
         ]);
+        $this->call([
+            TypeSedeer::class,
+            SatuanSedeer::class,
+            BrandSedeer::class,
+            SupplierSeeder::class, //
+        ]);
     }
+
 }

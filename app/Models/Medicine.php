@@ -10,10 +10,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Medicine extends Model
 {
     use HasFactory;
+
+    protected $table = 'medicines';
     protected $fillable = [
+        'kode',
+        'name',
         'description',
-        'kind',
+        'stok',
         'supplier_id',
+        'satuan_id',
+        'type_id',
+        'brand_id',
     ];
 
     /**
@@ -33,6 +40,21 @@ class Medicine extends Model
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function type(): BelongsTo
+    {
+        return $this->belongsTo(Type::class);
+    }
+
+    public function satuan(): BelongsTo
+    {
+        return $this->belongsTo(Satuan::class);
+    }
+
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
     }
 
   

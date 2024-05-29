@@ -12,24 +12,27 @@
         <form action="{{ route('drugs.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-4">
-                <label for="code">Nama Obat</label>
-                <select name="supplier_id" id="code" class="form-control">
-                    @foreach ($supplier as $sp)
-                        <option value="{{ $sp->id }}">{{ $sp->id }}. {{ $sp->medicine}}</option>
+                <label for="">Tanggal Obat Masuk</label>
+            <input type="date" name="date" class="form-control">
+            </div>
+            <div class="form-group mb-4">
+                <label for="medicine_code">Kode Obat</label>
+                <select name="medicine_code" id="medicine_code" class="form-control">
+                    <option value="">==Pilih Kode Obat==</option>
+                    @foreach ($medicine as $md)
+                        <option value="{{ $md->kode }}">{{ $md->kode }}</option>
                     @endforeach
+                </select>
+            </div>
+            <div class="form-group mb-4">
+                <label for="medicine_name">Nama Obat</label>
+                <select name="medicine_id" id="medicine_name" class="form-control" disabled>
+                    <option value="">Pilih Kode Obat terlebih dahulu</option>
                 </select>
             </div>
             <div class="form-group mb-4">
                 <label for="stock">Stock</label>
                 <input type="number" class="form-control" name="stock">
-            </div>
-            <div class="form-group mb-4">
-                <label for="code">Jenis Obat</label>
-                <select name="medicine_id" id="code" class="form-control">
-                    @foreach ($medicine as $md)
-                        <option value="{{ $md->id }}">{{ $md->id }}. {{ $md->kind}}</option>
-                    @endforeach
-                </select>
             </div>
             <div class="form-group mb-4">
                 <label for="production_date">Tanggal Produksi</label>
