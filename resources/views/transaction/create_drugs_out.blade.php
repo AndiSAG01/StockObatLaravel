@@ -19,43 +19,34 @@
             </b>
         </div>
         <div class="card-body text-dark">
-            <form action="{{ route('transaction.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('transaction.store') }}" method="POST">
                 @csrf
-                <div class="form-group mb-4">
-                    <label for="date">Tanggal</label>
-                    <input type="date" name="date" class="form-control">
-                </div>
-                <div class="form-group mb-4">
-                    <label for="code">Kode Obat</label>
-                    <select name="drug_id" id="code" class="form-control" >
-                        @foreach ($drugs as $drug)
-                            <option value="{{ $drug->id }}">{{ $drug->code }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group mb-4">
-                    <label for="name">Nama Obat</label>
-                    <select name="supplier_id" id="name" class="form-control">
-                        @foreach ($supplier as $sp)
-                            <option value="{{ $sp->id }}">{{ $sp->id }}. {{ $sp->medicine }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group mb-4">
-                    <label for="quantity_sell">Jumlah Keluar</label>
-                    <input type="number" class="form-control" name="quantity_sell">
-                </div>
-                <div class="form-group mb-4">
-                    <label for="drug_id">Jenis</label>
-                    <select name="medicine_id" id="drug_id" class="form-control">
-                        @foreach ($medicine as $md)
-                            <option value="{{ $md->id }}">{{ $md->id }}. {{ $md->kind }}</option>
-                        @endforeach
-                    </select>
-                </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <label for="date">Tanggal Keluar</label>
+                    <input type="date" name="date" class="form-control" id="date" value="{{ old('date') }}" required>
                 </div>
+                
+                <div class="form-group">
+                    <label for="drug_id">Kode Obat Masuk</label>
+                    <select name="drug_id" id="drug_id" class="form-control" required>
+                        <option value="">==Pilih Kode Obat==</option>
+                        @foreach($drugs as $drug)
+                            <option value="{{ $drug->id }}" {{ old('drug_id') == $drug->id ? 'selected' : '' }}>{{ $drug->code }} - {{ $drug->medicine->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity_sell">Jumlah Keluar</label>
+                    <input type="number" name="quantity_sell" class="form-control" id="quantity_sell" value="{{ old('quantity_sell') }}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Keterangan</label>
+                    <textarea name="description" class="form-control" id="description">{{ old('description') }}</textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

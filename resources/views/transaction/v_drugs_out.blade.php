@@ -26,6 +26,7 @@
             <th>Kode Obat Masuk</th>
             <th>Nama Obat</th>
             <th>Jumlah Keluar</th>
+            <th>Keterangan</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -36,8 +37,9 @@
               <td>{{ $ts->code_transaction }}</td>
               <td>{{ $ts->date }}</td>
               <td>{{ $ts->drug->code }}</td>
-              <td>{{ $ts }}</td>
+              <td>{{ $ts->drug->medicine->name }}</td>
               <td>{{ $ts->quantity_sell }}</td>
+              <td>{{ $ts->description }}</td>
               <td>
                 <a href="{{ route('transaction.edit', $ts->id) }}" class="btn btn-warning btn-sm">Edit</a>
                 <form id="deleteForm" class="d-inline" action="{{ route('transaction.delete',$ts->id) }}" method="post">

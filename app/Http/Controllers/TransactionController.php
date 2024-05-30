@@ -23,22 +23,18 @@ class TransactionController extends Controller
 
     public function create()
     {
-        $drugs = Drugs::all();
-        $supplier = Supplier::all();
-        $medicine = Medicine::all();
-        return view('transaction.create_drugs_out',compact('drugs','supplier','medicine'));
+        $drugs = Drugs::with('medicine')->get();
+        return view('transaction.create_drugs_out',compact('drugs'));
     }
 
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'code_transaction' => 'string|max:10',
             'date' => 'required|string|max:100',
             'quantity_sell' => 'required|string|max:4',
             'drug_id' => 'exists:drugs,id',
-            'supplier_id' => 'exists:suppliers,id',
-            'medicine_id' => 'exists:medicines,id',
+            'description' => 'required|string|'
         ]);
 
         $drug = Drugs::find($validatedData['drug_id']);
@@ -61,7 +57,7 @@ class TransactionController extends Controller
             // Check if the stock is now 0
             if ($drug->stock === -1) {
                 // Set a flag in the drug model
-                $drug->stock = true;
+                $drug->stock = true;                
             }
 
             // Save the changes to the drug

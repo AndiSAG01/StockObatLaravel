@@ -17,10 +17,9 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->string('code_transaction');
             $table->string('date');
-            $table->foreignId('supplier_id')->constrained()->cascadeOnDelete();
             $table->foreignId('drug_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('medicine_id')->constrained()->cascadeOnDelete();
             $table->string('quantity_sell');
+            $table->string('description');
             $table->timestamps();
         });
     }

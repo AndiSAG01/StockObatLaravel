@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-lg-12">
-<x-alert/>
+<x-alert/> 
     <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">DATA OBAT MASUK</h6>
@@ -34,11 +34,13 @@
                 <td>{{ $ob->medicine->name }}</td>
                 <td>
                   @if ($ob->stock == 0)
-                  <a href="" class="btn btn-danger">Stock Habis</a>
+                      <a href="#" class="btn btn-danger">Stok Habis</a>
+                  @elseif ($ob->stock < 11)
+                      <a href="#" class="btn btn-warning">{{ $ob->stock }}</a>
                   @else
-                    {{ $ob->stock }}
+                      {{ $ob->stock }}
                   @endif
-                </td>
+              </td>     
                 <td>{{ $ob->production_date }}</td>
                 <td>{{ $ob->expiration_date }}</td>
                 <td>
@@ -53,6 +55,11 @@
             @endforeach
         </tbody>
         </table>
+        <p>Keterangan :</p>
+        <span><b>STOK MENIPIS</b></span> = <a href="" class="btn btn-warning"></a>
+        <p>
+          <span><b>STOK HABIS</b></span> = <a href="" class="btn btn-danger"></a>
+        </p>
       </div>
     </div>
   </div>

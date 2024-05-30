@@ -15,19 +15,13 @@ class Transaction extends Model
         'code_transaction',
         'date',
         'drug_id',
-        'supplier_id',
-        'medicine_id',
         'quantity_sell',
+        'description'
     ];
 
     public function drug()
     {
         return $this->belongsTo(Drugs::class, 'drug_id');
-    }
-
-    public function supplier(): BelongsTo
-    {
-        return $this->belongsTo(Supplier::class);
     }
 
     public function medicine(): BelongsTo

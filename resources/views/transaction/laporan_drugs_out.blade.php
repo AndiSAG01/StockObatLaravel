@@ -11,16 +11,16 @@ Laporan Data Obat Keluar {{ $year }}
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table id="dataTable" class="table align-items-center table-flush table-hover" id="dataTableHover">
+            <table id="dataTable" class="table align-items-center table-flush table-hover">
                 <thead class="thead-light">
                   <tr>
                     <th>No</th>
                     <th>Kode Obat Keluar</th>
-                    <th>Tanggal</th>
+                    <th>Tanggal Keluar</th>
                     <th>Kode Obat</th>
                     <th>Nama Obat</th>
                     <th>Jumlah Keluar</th>
-                    <th>Jenis Obat</th>
+                    <th>Keterangan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -30,9 +30,9 @@ Laporan Data Obat Keluar {{ $year }}
                       <td>{{ $ts->code_transaction }}</td>
                       <td>{{ $ts->date }}</td>
                       <td>{{ $ts->drug->code }}</td>
-                      <td>{{ $ts->supplier->medicine }}</td>
+                      <td>{{ $ts->drug->medicine->name }}</td>
                       <td>{{ $ts->quantity_sell }}</td>
-                      <td>{{ $ts->medicine->kind }}</td>
+                      <td>{{ $ts->description }}</td>
                     </tr>
                   @endforeach
                 </tbody>

@@ -12,20 +12,6 @@
     @elseif ($errors->all())
         <div class="alert alert-danger fw-bold" role="alert">Data is invalid 😣</div>
     @endif
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <strong>Alert Heading</strong>
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    </div>
-
-    <script>
-        var alertList = document.querySelectorAll(".alert");
-        alertList.forEach(function(alert) {
-            new bootstrap.Alert(alert);
-        });
-    </script>
     <div class="container-fluid">
         <div class="card-header text-white" style="background-color: blue">
             <b>
@@ -81,7 +67,7 @@
                     </select>
                 </div>
                 <div class="form-group mb-4">
-                    <label for="description">Deskripsi</label>
+                    <label for="description">Stok</label>
                     <input type="text" name="stok" class="form-control" value="{{ old('stok', $medicine->stok) }}">
                 </div>
                 <div class="form-group mb-4">

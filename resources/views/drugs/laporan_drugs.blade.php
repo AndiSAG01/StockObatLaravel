@@ -15,10 +15,11 @@ Laporan Data Obat Masuk {{ $year }}
                 <thead class="thead-light">
                     <tr>
                         <th>No</th>
-                        <th>Kode</th>
+                        <th>kode obat Masuk</th>
+                        <th>tanggal masuk</th>
+                        <th>Kode obat</th>
                         <th>Nama Obat</th>
-                        <th>Stock</th>
-                        <th>Jenis Obat</th>
+                        <th>Jumlah Obat Masuk</th>
                         <th>Tanggal Produksi</th>
                         <th>Tanggal Kadaluarsa</th>
                     </tr>
@@ -28,9 +29,10 @@ Laporan Data Obat Masuk {{ $year }}
                     <tr>
                         <td>{{ ++$no }}</td>
                         <td>{{ $ob->code }}</td>
-                        <td>{{ $ob->supplier->medicine }}</td>
+                        <td>{{ $ob->date }}</td>
+                        <td>{{ $ob->medicine->kode }}</td>
+                        <td>{{ $ob->medicine->name }}</td>
                         <td>{{ $ob->transactions->sum('quantity_sell') + $ob->stock  }}</td>
-                        <td>{{ $ob->medicine->kind }}</td>
                         <td>{{ $ob->production_date }}</td>
                         <td>{{ $ob->expiration_date }}</td>
                     </tr>
