@@ -95,7 +95,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('drugs.laporan') }}">
                 <i class="fab fa-fw fa-wpforms"></i>
-                <span>Laporan Stock Obat Masuk</span>
+                <span>Laporan Obat Masuk</span>
             </a>
         </li>
 

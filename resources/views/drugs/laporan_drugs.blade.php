@@ -33,6 +33,7 @@ Laporan Data Obat Masuk {{ $year }}
                         <td>{{ $ob->medicine->kode }}</td>
                         <td>{{ $ob->medicine->name }}</td>
                         <td>{{ $ob->transactions->sum('quantity_sell') + $ob->stock  }}</td>
+                        {{-- <td>{{ $ob->stock  }}</td> --}}
                         <td>{{ $ob->production_date }}</td>
                         <td>{{ $ob->expiration_date }}</td>
                     </tr>

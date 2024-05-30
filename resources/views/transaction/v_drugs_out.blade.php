@@ -4,12 +4,7 @@
 
 <div class="col-lg-12">
   <x-alert></x-alert>
-  {{-- Display any danger messages from the controller --}}
-  @if($dangerMessage = Session::get('info'))
-    <div class="alert alert-danger" role="alert">
-        {{ $dangerMessage }}
-    </div>
-  @endif
+
 
   <div class="card mb-4">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

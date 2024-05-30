@@ -77,26 +77,45 @@ class TransactionController extends Controller
     public function edit($id)
     {
        
-        $transactions = Transaction::findOrFail($id);
-        $drugs = Drugs::all();
-        $supplier = Supplier::all();
-        $medicine = Medicine::all();
-        return view('transaction.edit_drugs_out', compact('transactions','drugs','supplier','medicine'));
+        $transaction = Transaction::findOrFail($id);
+        $drugs = Drugs::with('medicine')->get();
+        return view('transaction.edit_drugs_out', compact('transaction','drugs'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'code_transaction' => 'string|max:10',
-            'date' => 'required|string|max:100',
-            'quantity_sell' => 'required|string|max:4',
-            'drug_id' => '|exists:drugs,id',
-        ]);
-        Transaction::find($id)->update($validatedData);
 
+public function update(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'date' => 'required|string|max:100',
+        'quantity_sell' => 'required|integer|min:1',
+        'description' => 'required|string|max:255'
+    ]);
 
-        return redirect()->route('transaction.index')->with('success','Data Obat Keluar Berhasil Di Edit');
+    // Find the existing transaction by ID
+    $transaction = Transaction::findOrFail($id);
+
+    // Calculate the difference in quantity
+    $originalQuantity = $transaction->quantity_sell;
+    $newQuantity = $validatedData['quantity_sell'];
+    $quantityDifference = $newQuantity - $originalQuantity;
+
+    // Find the associated drug record
+    $drug = Drugs::findOrFail($transaction->drug_id);
+    if ($drug) {
+        if ($drug->stock < $quantityDifference) {
+            return redirect()->route('transaction.index')->with('info', 'Stock Obat ' . $drug->medicine->name . ' Tidak Cukup.');
+        }
+
+        // Adjust the stock of the drug$drug
+        $drug->stock -= $quantityDifference;
+        $drug->save();
     }
+
+    // Update the transaction record with validated data
+    $transaction->update($validatedData);
+
+    return redirect()->route('transaction.index')->with('success', 'Data Obat Keluar Berhasil Di Edit');
+}
 
 
     public function delete($id)
