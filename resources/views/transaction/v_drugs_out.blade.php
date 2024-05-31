@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+    <li class="breadcrumb-item">Data Obat Keluar</li>
+  </ol>
+</nav>
 <div class="col-lg-12">
   <x-alert></x-alert>
 
@@ -22,7 +27,7 @@
             <th>Nama Obat</th>
             <th>Jumlah Keluar</th>
             <th>Keterangan</th>
-            <th>Aksi</th>
+            <th style="width: 12%">Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -36,11 +41,11 @@
               <td>{{ $ts->quantity_sell }}</td>
               <td>{{ $ts->description }}</td>
               <td>
-                <a href="{{ route('transaction.edit', $ts->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{{ route('transaction.edit', $ts->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                 <form id="deleteForm" class="d-inline" action="{{ route('transaction.delete',$ts->id) }}" method="post">
                   @csrf
                   @method('delete')
-                  <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Delete</button>
+                  <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()"><i class="fas fa-trash-alt"></i></button>
                 </form>
               </td>
             </tr>

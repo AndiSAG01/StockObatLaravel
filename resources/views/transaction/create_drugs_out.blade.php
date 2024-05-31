@@ -12,6 +12,13 @@
     @elseif ($errors->all())
         <div class="alert alert-danger fw-bold" role="alert">Data is invalid 😣</div>
     @endif
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('transaction.index') }}">Data Obat Keluar</a></li>
+          <li class="breadcrumb-item">Tambah Data</li>
+        </ol>
+      </nav>
     <div class="container-fluid">
         <div class="card-header text-white" style="background-color: blue">
             <b>

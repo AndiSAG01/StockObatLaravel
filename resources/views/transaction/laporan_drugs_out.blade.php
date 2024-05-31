@@ -5,6 +5,12 @@ Laporan Data Obat Keluar {{ $year }}
 @endsection
 
 @section('content')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+    <li class="breadcrumb-item">Laporan Data Obat Keluar</li>
+  </ol>
+</nav>
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h3>Laporan Data Obat Keluar</h3>

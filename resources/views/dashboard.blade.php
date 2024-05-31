@@ -5,7 +5,6 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="./">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       </ol>
     </div>
@@ -57,7 +56,7 @@
               </div>
               <div class="col-auto">
                 <a href="{{ route('drugs.index') }}">
-                  <i class="fas fa-fw fa-window-maximize fa-2x text-info"></i>
+                  <i class="fas fa-sign-in-alt fa-2x text-info"></i>
                 </a>
               </div>
             </div>
@@ -75,7 +74,7 @@
               </div>
               <div class="col-auto">
                 <a href="{{ route('transaction.index') }}">
-                  <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                  <i class="fas fa-sign-out-alt fa-2x text-success"></i>
                 </a>
               </div>
             </div>

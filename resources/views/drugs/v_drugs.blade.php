@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+    <li class="breadcrumb-item">Data Obat Masuk</li>
+  </ol>
+</nav>
 <div class="col-lg-12">
 <x-alert/> 
     <div class="card mb-4">
@@ -21,7 +26,7 @@
               <th>Jumlah Obat Masuk</th>
               <th>Tanggal Produksi</th>
               <th>Tanggal Kadaluarsa</th>
-              <th>Aksi</th>
+              <th style="width: 12%">Aksi</th>
             </tr>
           </thead>
           <tbody>

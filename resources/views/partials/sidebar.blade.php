@@ -76,7 +76,7 @@
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('drugs.index') }}">
-                <i class="fas fa-fw fa-window-maximize"></i>
+                <i class="fas fa-sign-in-alt"></i>
                 <span>Data Obat Masuk</span>
             </a>
         </li>
@@ -85,7 +85,7 @@
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('transaction.index') }}">
-                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-sign-out-alt"></i>
                 <span>Data Obat Keluar</span>
             </a>
         </li>

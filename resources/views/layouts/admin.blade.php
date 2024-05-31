@@ -36,7 +36,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <span class="text-white" style="font-family:'Courier New', Courier, monospace">
-                        <h1><i>APOTIK SANIKA JAMBI</i></h1>
+                        <h1><i><marquee behavior="right" direction="">Apotik Sanika Jambi</marquee></i></h1>
                     </span>
                     <ul class="navbar-nav ml-auto">
                         <div class="topbar-divider d-none d-sm-block"></div>

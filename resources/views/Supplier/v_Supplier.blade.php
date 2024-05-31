@@ -17,8 +17,7 @@
               <th>Nama Supplier</th>
               <th>Alamat</th>
               <th>Telpon</th>
-              {{-- <th>Obat</th> --}}
-              <th>Aksi</th>
+              <th style="width: 15%">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -28,14 +27,6 @@
                 <td>{{ $sp->name }}</td>
                 <td>{{ $sp->address }}</td>
                 <td>{{ $sp->telphone }}</td>
-                {{-- <td>
-                  @foreach (explode(',', $sp->medicine) as $medicine)
-                      {{ $medicine }}
-                      @if (!$loop->last)
-                          <br>
-                      @endif
-                  @endforeach
-              </td>      --}}
                 <td>
                     <a href="{{ route('supplier.edit', $sp->id ) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                     <form id="deleteForm" class="d-inline" action="{{ route('supplier.delete',$sp->id) }}" method="post">

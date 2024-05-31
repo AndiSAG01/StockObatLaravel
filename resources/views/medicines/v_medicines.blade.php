@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+    <li class="breadcrumb-item">Data Obat</li>
+  </ol>
+</nav>
 <div class="col-lg-12">
   <x-alert></x-alert>
     <div class="card mb-4">
@@ -22,7 +27,7 @@
               <th>Jenis</th>
               <th>Satuan</th>
               <th>Keterangan</th>
-              <th>Aksi</th>
+              <th style="width: 12%">Aksi</th>
             </tr>
           </thead>
           <tbody>
