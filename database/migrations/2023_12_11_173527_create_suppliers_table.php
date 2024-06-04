@@ -18,7 +18,6 @@ class CreateSuppliersTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('telphone');
-            // $table->string('medicine');
             $table->timestamps();
         });
     }

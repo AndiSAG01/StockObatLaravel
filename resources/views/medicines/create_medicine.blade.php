@@ -69,10 +69,10 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group mb-4">
+                {{-- <div class="form-group mb-4">
                     <label for="description">Jumlah Stok</label>
                     <input type="number" name="stok" class="form-control">
-                </div>
+                </div> --}}
                 <div class="form-group mb-4">
                     <label for="description">Deskripsi</label>
                     <input type="text" name="description" class="form-control">

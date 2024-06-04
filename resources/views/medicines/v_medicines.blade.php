@@ -22,7 +22,7 @@
               <th>Kode Obat</th>
               <th>Supplier</th>
               <th>Nama Obat</th>
-              <th>Jumlah Stok Awal</th>
+              {{-- <th>Jumlah Stok Awal</th> --}}
               <th>Merek</th>
               <th>Jenis</th>
               <th>Satuan</th>
@@ -37,7 +37,7 @@
                 <td>{{ $mb->kode }}</td>
                 <td>{{ $mb->supplier->name }}</td>
                 <td>{{ strtoupper($mb->name) }}</td>
-                <td>
+                {{-- <td>
                   @if ($mb->stok == 0)
                       <a href="#" class="btn btn-danger">Stok Habis</a>
                   @elseif ($mb->stok < 11)
@@ -45,7 +45,7 @@
                   @else
                       {{ $mb->stok }}
                   @endif
-              </td>              
+              </td>               --}}
                 <td>{{ $mb->brand->name }}</td>
                 <td>{{ $mb->type->name }}</td>
                 <td>{{ $mb->satuan->name }}</td>
@@ -62,12 +62,12 @@
             @endforeach
         </tbody>
         </table>
-        <p>Keterangan :</p>
+        {{-- <p>Keterangan :</p>
         <span><b>STOK MENIPIS</b></span> = <a href="" class="btn btn-warning"></a>
         <p>
           <span><b>STOK HABIS</b></span> = <a href="" class="btn btn-danger"></a>
         </p>
-      </div>
+      </div> --}}
     </div>
   </div>
 @endsection

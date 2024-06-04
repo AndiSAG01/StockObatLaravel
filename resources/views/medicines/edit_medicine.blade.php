@@ -73,10 +73,10 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group mb-4">
+                {{-- <div class="form-group mb-4">
                     <label for="description">Stok</label>
                     <input type="text" name="stok" class="form-control" value="{{ old('stok', $medicine->stok) }}">
-                </div>
+                </div> --}}
                 <div class="form-group mb-4">
                     <label for="description">Deskripsi</label>
                     <input type="text" name="description" class="form-control" value="{{ old('description', $medicine->description) }}">

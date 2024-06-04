@@ -33,7 +33,7 @@ class MedicineController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
-            'stok' => 'required|string|max:100',
+            // 'stok' => 'required|string|max:100',
             'supplier_id' => 'required|string|exists:suppliers,id',
             'satuan_id' => 'required|string|exists:satuans,id',
             'type_id' => 'required|string|exists:types,id',
@@ -65,7 +65,7 @@ class MedicineController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:100',
-            'stok' => 'required|string|max:100',
+            // 'stok' => 'required|string|max:100',
             'supplier_id' => 'required|string|exists:suppliers,id',
             'satuan_id' => 'required|string|exists:satuans,id',
             'type_id' => 'required|string|exists:types,id',

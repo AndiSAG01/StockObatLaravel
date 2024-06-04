@@ -34,28 +34,8 @@ class DrugsController extends Controller
       'expiration_date' => 'required|string|max:50',
     ]);
 
-    $medicine = Medicine::find($validatedData['medicine_id']);
-    if ($medicine) {
-      if ($medicine->stok === 0) {
-        return redirect()->route('drugs.index')->with('info', 'Stock Obat' . $medicine->name . 'Telah Habis.');
-      }
+    Drugs::create($validatedData);
 
-      if ($validatedData['stock'] > $medicine->stok) {
-        return redirect()->route('drugs.index')->with('info', 'StockObat' . $medicine->name  . 'Tidak Cukup.');
-      }
-      $medicine->stok -= $validatedData['stock'];
-      if ($medicine->stok === -1) {
-        $medicine->stok = true;
-      }
-
-      $medicine->save();
-
-      $drugs =  Drugs::create($validatedData);
-
-      if ($medicine->stok == -1) {
-        $drugs->is_stock_empty = true;
-      }
-    }
     return redirect()->route('drugs.index')->with('success', 'Data Masuk obat Berhasil Ditambahkan');
   }
 
