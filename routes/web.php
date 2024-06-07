@@ -79,6 +79,9 @@ Route::middleware(['auth'])->group(function () {
    Route::delete('/drugs/delete/{id}', [DrugsController::class,'delete'])->name('drugs.delete');
    Route::get('/Drugs', [DrugsController::class,'laporan'])->name('drugs.laporan');
    Route::get('/get-medicine-name/{code}', [DrugsController::class, 'getMedicineName']);
+   Route::get('/drugs/print',[DrugsController::class, 'print'])->name('print');
+   Route::get('/drugs/filter', [DrugsController::class, 'filter'])->name('drugs.filter');
+   Route::get('drugs/export', [DrugsController::class, 'export'])->name('drugs.export');
 
    #supplier
    Route::get('/supplier', [SupplierController::class,'index'])->name('supplier.index');
@@ -97,6 +100,9 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/transaction/update/{id}', [TransactionController::class,'update'])->name('transaction.update');
    Route::delete('/transaction/delete/{id}', [TransactionController::class,'delete'])->name('transaction.delete');
    Route::get('/transaction/laporan', [TransactionController::class,'laporan'])->name('transaction.laporan');
+   Route::get('/transaction/print',[TransactionController::class, 'print'])->name('transaction.print');
+   Route::get('/transaction/filter', [TransactionController::class, 'filter'])->name('transaction.filter');
+   Route::get('/transaction/export', [TransactionController::class, 'export'])->name('transaction.export');
 
   
    

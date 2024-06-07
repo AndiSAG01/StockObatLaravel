@@ -7,6 +7,8 @@ use App\Models\Medicine;
 use App\Models\Supplier;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Exports\DrugsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DrugsController extends Controller
 {
@@ -56,30 +58,7 @@ class DrugsController extends Controller
           'expiration_date' => 'required|date',
       ]);
   
-      // Find the drug record by ID
-      $drug = Drugs::findOrFail($id);
-      
-      // Calculate the difference in stock
-      $originalStock = $drug->stock;
-      $newStock = $validatedData['stock'];
-      $stockDifference = $newStock - $originalStock;
-  
-      // Find the associated medicine record
-      $medicine = Medicine::findOrFail($drug->medicine_id);
-  
-      // Check if the medicine exists and adjust the stock
-      if ($medicine) {
-          if ($medicine->stok < $stockDifference) {
-              return redirect()->route('drugs.index')->with('info', 'Stock Obat ' . $medicine->name . ' Tidak Cukup.');
-          }
-  
-          // Adjust the stock of the medicine
-          $medicine->stok -= $stockDifference;
-          $medicine->save();
-      }
-  
-      // Update the drug record with validated data
-      $drug->update($validatedData);
+    Drugs::findOrFail($id)->update($validatedData);
   
       return redirect()->route('drugs.index')->with('success', 'Data Masuk obat Berhasil Diubah');
   }
@@ -110,5 +89,53 @@ class DrugsController extends Controller
     } else {
       return response()->json([]);
     }
+  }
+
+  public function print(Request $request)
+    {
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $query = Drugs::query();
+
+        if ($start_date) {
+            $query->where('date', '>=', $start_date);
+        }
+
+        if ($end_date) {
+            $query->where('date', '<=', $end_date);
+        }
+
+        $drugs = $query->get();
+
+        return view('drugs.print', compact('drugs'));
+    }
+
+  public function filter(Request $request)
+  {
+    $start_date = $request->input('start_date');
+    $end_date = $request->input('end_date');
+
+    $query = Drugs::query();
+
+    if ($start_date) {
+        $query->where('date', '>=', $start_date);
+    }
+
+    if ($end_date) {
+        $query->where('date', '<=', $end_date);
+    }
+
+    $drugs = $query->get();
+
+    return view('drugs.laporan_drugs', compact('drugs'));
+  }
+
+  public function export(Request $request)
+  {
+      $start_date = $request->input('start_date');
+      $end_date = $request->input('end_date');
+
+      return Excel::download(new DrugsExport($start_date, $end_date), 'laporan_obat_masuk.xlsx');
   }
 }

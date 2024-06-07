@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TransactionsExport;
 use App\Models\Drugs;
 use App\Models\Medicine;
 use App\Models\Supplier;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TransactionController extends Controller
 {
@@ -131,4 +133,52 @@ public function update(Request $request, $id)
         $year = Carbon::now()->format('M-Y');
         return view('transaction.laporan_drugs_out', compact('transactions','year'));
     }
+
+    public function print(Request $request)
+    {
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $query = Transaction::query();
+
+        if ($start_date) {
+            $query->where('date', '>=', $start_date);
+        }
+
+        if ($end_date) {
+            $query->where('date', '<=', $end_date);
+        }
+
+        $transactions = $query->get();
+
+        return view('transaction.print', compact('transactions'));
+    }
+
+  public function filter(Request $request)
+  {
+    $start_date = $request->input('start_date');
+    $end_date = $request->input('end_date');
+
+    $query = Transaction::query();
+
+    if ($start_date) {
+        $query->where('date', '>=', $start_date);
+    }
+
+    if ($end_date) {
+        $query->where('date', '<=', $end_date);
+    }
+
+    $transactions = $query->get();
+
+    return view('transaction.laporan_drugs_out', compact('transactions'));
+  }
+
+  public function export(Request $request)
+  {
+      $start_date = $request->input('start_date');
+      $end_date = $request->input('end_date');
+
+      return Excel::download(new TransactionsExport($start_date, $end_date), 'laporan_obat_Keluar.xlsx');
+  }
 }

@@ -22,6 +22,38 @@
 
 
 </head>
+<style>
+    @media print {
+        .no-print {
+            display: none;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .header img {
+        width: 100px;
+    }
+    .header .title {
+        flex-grow: 1;
+        text-align: center;
+    }
+    .header .title h2, .header .title h4 {
+        margin: 0;
+    }
+</style>
 
 <body id="page-top">
     <div id="wrapper">
@@ -68,7 +100,7 @@
                 </nav>
                 @yield('content')
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
+                <footer class="sticky-footer bg-white no-print">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
                             <span>copyright - developed by
@@ -212,6 +244,20 @@
                     }
                 });
             });
+        </script>
+        <script>
+            function resetForm() {
+                document.getElementById('start_date').value = '';
+                document.getElementById('end_date').value = '';
+                window.location.href = "{{ route('drugs.filter') }}";
+            }
+        </script>
+        <script>
+            function resetFormTransaction() {
+                document.getElementById('start_date').value = '';
+                document.getElementById('end_date').value = '';
+                window.location.href = "{{ route('transaction.filter') }}";
+            }
         </script>
 </body>
 

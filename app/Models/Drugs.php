@@ -52,11 +52,5 @@ class Drugs extends Model
             $this->snapshot_stock = $this->stock;
             $this->save();
         }
-        
     }
-    
-
-    
-
-
 }

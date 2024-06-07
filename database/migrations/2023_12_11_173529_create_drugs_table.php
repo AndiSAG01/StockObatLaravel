@@ -16,6 +16,8 @@ class CreateDrugsTable extends Migration
         Schema::create('drugs', function (Blueprint $table) {
             $table->id();
             $table->string('date');
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
             $table->string('code');
             $table->string('stock');
             $table->integer('snapshot_stock')->nullable();

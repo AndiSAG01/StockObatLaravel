@@ -1,9 +1,5 @@
 @extends('layouts.admin')
 
-@section('title')
-Laporan Data Obat Keluar {{ $year }}
-@endsection
-
 @section('content')
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -16,8 +12,24 @@ Laporan Data Obat Keluar {{ $year }}
         <h3>Laporan Data Obat Keluar</h3>
     </div>
     <div class="card-body">
+      <form method="GET" action="{{ route('transaction.filter') }}" class="form-inline">
+          <div class="form-group mb-2">
+              <label for="start_date" class="mr-2">Tanggal Mulai:</label>
+              <input type="date" id="start_date" name="start_date" class="form-control mr-2" style="width: 200px">
+          </div>
+          <div class="form-group mb-2">
+              <label for="end_date" class="mr-2">Tanggal Akhir:</label>
+              <input type="date" id="end_date" name="end_date" class="form-control mr-2" style="width: 200px">
+          </div>
+          <button type="submit" class="btn btn-primary mb-2 mr-2">Filter</button>
+          <button type="button" onclick="resetFormTransaction()" class="btn btn-danger mb-2">Reset</button>
+      </form>
+  </div>
+    <div class="card-body">
+      <a href="{{ route('transaction.print', ['start_date' => request('start_date'), 'end_date' => request('end_date')]) }}" class="btn btn-secondary mb-4">Print</a>
+      <a href="{{ route('transaction.export', ['start_date' => request('start_date'), 'end_date' => request('end_date')]) }}" class="btn btn-success mb-4">Excel</a>
         <div class="table-responsive">
-            <table id="dataTable" class="table align-items-center table-flush table-hover">
+            <table class="table align-items-center table-flush table-hover">
                 <thead class="thead-light">
                   <tr>
                     <th>No</th>
