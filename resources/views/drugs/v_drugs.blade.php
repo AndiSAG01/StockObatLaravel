@@ -47,7 +47,13 @@
                   @endif
               </td>     
                 <td>{{ $ob->production_date }}</td>
-                <td>{{ $ob->expiration_date }}</td>
+                <td>
+                  @if ($ob->expiration_date < date('Y-m-d'))
+                      <a href="#" class="btn btn-danger">Kadaluarsa</a>
+                  @else
+                      {{ $ob->expiration_date }}
+                  @endif
+                </td>
                 <td>
                     <a href="{{ route('drugs.edit', $ob->id ) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                     <form id="deleteForm" class="d-inline" action="{{ route('drugs.delete',$ob->id) }}" method="post">
