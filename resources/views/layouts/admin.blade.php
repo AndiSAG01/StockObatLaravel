@@ -259,6 +259,7 @@
                 window.location.href = "{{ route('transaction.filter') }}";
             }
         </script>
+        
 </body>
 
 
