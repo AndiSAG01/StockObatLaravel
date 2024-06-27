@@ -46,12 +46,16 @@ class HomeController extends Controller
         // Prepare data for the chart
         $drugNames = $popularDrugs->pluck('drug.medicine.name')->toArray();
         $drugTotals = $popularDrugs->pluck('total_quantity')->toArray();
-        // dd($drugNames, $drugTotals);
 
+        // Ubah nilai menjadi persen
+        $labels = [];
+        foreach ($drugTotals as $index => $total) {
+            $labels[] = $drugNames[$index] . ' (' . $total . '%)';
+        }
         // Create the chart
-        $chart = (new LarapexChart)->setTitle('Laporan Diagram Obat Keluar')
+        $chart = (new LarapexChart)->setTitle('Laporan Diagram')
             ->setDataset($drugTotals)
-            ->setLabels($drugNames);
+            ->setLabels($labels);
         return view('dashboard', compact('supplier', 'drugs', 'medicine', 'transaction', 'chart'));
     }
 
