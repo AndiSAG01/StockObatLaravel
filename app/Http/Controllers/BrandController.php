@@ -44,9 +44,9 @@ class BrandController extends Controller
         return redirect()->route('brand.index')->with('success', 'Data Berhasil Di Ubah');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        $brand = Brand::findOrFail($id);
+        $brand = Brand::find($id);
         $brand->delete();
         return redirect()->route('brand.index')->with('danger', 'Data Berhasil Di Hapus');
     }

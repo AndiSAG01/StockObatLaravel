@@ -30,10 +30,10 @@
                 <td>{{ $item->name }}</td>
                 <td>
                     <a href="{{ route('satuan.edit', $item->id ) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                    <form id="deleteForm" class="d-inline" action="{{ route('satuan.delete',$item->id) }}" method="post">
+                    <form id="deleteForm{{ $item->id }}" class="d-inline" action="{{ route('satuan.delete',$item->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $item->id }})"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </td>
             </tr>

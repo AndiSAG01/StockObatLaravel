@@ -29,10 +29,10 @@
                 <td>{{ $sp->telphone }}</td>
                 <td>
                     <a href="{{ route('supplier.edit', $sp->id ) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                    <form id="deleteForm" class="d-inline" action="{{ route('supplier.delete',$sp->id) }}" method="post">
+                    <form id="deleteForm{{ $sp->id }}" class="d-inline" action="{{ route('supplier.delete',$sp->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $sp->id }})"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </td>
             </tr>

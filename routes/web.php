@@ -46,21 +46,21 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/type/store', [TypeController::class,'store'])->name('type.store');
    Route::get('/type/edit/{id}', [TypeController::class,'edit'])->name('type.edit');
    Route::post('/type/update/{id}', [TypeController::class,'update'])->name('type.update');
-   Route::delete('/type/delete/{id}', [TypeController::class,'delete'])->name('type.delete');
+   Route::delete('/type-delete/{id}', [TypeController::class,'delete'])->name('type.delete');
    #satuan
    Route::get('/satuan', [SatuanController::class,'index'])->name('satuan.index');
    Route::get('/satuan/create', [SatuanController::class,'create'])->name('satuan.create');
    Route::post('/satuan/store', [SatuanController::class,'store'])->name('satuan.store');
    Route::get('/satuan/edit/{id}', [SatuanController::class,'edit'])->name('satuan.edit');
    Route::post('/satuan/update/{id}', [SatuanController::class,'update'])->name('satuan.update');
-   Route::delete('/satuan/delete/{id}', [SatuanController::class,'delete'])->name('satuan.delete');
+   Route::delete('/satuan-delete/{id}', [SatuanController::class,'delete'])->name('satuan.delete');
    #Brand
    Route::get('/brand', [BrandController::class,'index'])->name('brand.index');
    Route::get('/brand/create', [BrandController::class,'create'])->name('brand.create');
    Route::post('/brand/store', [BrandController::class,'store'])->name('brand.store');
    Route::get('/brand/edit/{id}', [BrandController::class,'edit'])->name('brand.edit');
    Route::post('/brand/update/{id}', [BrandController::class,'update'])->name('brand.update');
-   Route::delete('/brand/delete/{id}', [BrandController::class,'delete'])->name('brand.delete');
+   Route::delete('/brand-delete/{id}', [BrandController::class,'destroy'])->name('brand_delete');
     
    #medicines
    Route::get('/medicines', [MedicineController::class,'index'])->name('medicines.index');
@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/medicines/store', [MedicineController::class,'store'])->name('medicines.store');
    Route::get('/medicines/edit/{id}', [MedicineController::class,'edit'])->name('medicines.edit');
    Route::post('/medicines/update/{id}', [MedicineController::class,'update'])->name('medicines.update');
-   Route::delete('/medicines/delete/{id}', [MedicineController::class,'delete'])->name('medicines.delete');
+   Route::delete('/medicines-delete/{id}', [MedicineController::class,'delete'])->name('medicines.delete');
  
    #drugs
    Route::get('/drugs', [DrugsController::class,'index'])->name('drugs.index');
@@ -76,7 +76,7 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/drugs/store', [DrugsController::class,'store'])->name('drugs.store');
    Route::get('/drugs/edit/{id}', [DrugsController::class,'edit'])->name('drugs.edit');
    Route::post('/drugs/update/{id}', [DrugsController::class,'update'])->name('drugs.update');
-   Route::delete('/drugs/delete/{id}', [DrugsController::class,'delete'])->name('drugs.delete');
+   Route::delete('/drugs-delete/{id}', [DrugsController::class,'delete'])->name('drugs.delete');
    Route::get('/Drugs', [DrugsController::class,'laporan'])->name('drugs.laporan');
    Route::get('/get-medicine-name/{code}', [DrugsController::class, 'getMedicineName']);
    Route::get('/drugs/print',[DrugsController::class, 'print'])->name('print');
@@ -89,7 +89,7 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/supplier/store', [SupplierController::class,'store'])->name('supplier.store');
    Route::get('/supplier/edit/{id}', [SupplierController::class,'edit'])->name('supplier.edit');
    Route::post('/supplier/update/{id}', [SupplierController::class,'update'])->name('supplier.update');
-   Route::delete('/supplier/delete/{id}', [SupplierController::class,'delete'])->name('supplier.delete');
+   Route::delete('/supplier-delete/{id}', [SupplierController::class,'delete'])->name('supplier.delete');
  
 
    #transaction
@@ -98,7 +98,7 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/transaction/store', [TransactionController::class,'store'])->name('transaction.store');
    Route::get('/transaction/edit/{id}', [TransactionController::class,'edit'])->name('transaction.edit');
    Route::post('/transaction/update/{id}', [TransactionController::class,'update'])->name('transaction.update');
-   Route::delete('/transaction/delete/{id}', [TransactionController::class,'delete'])->name('transaction.delete');
+   Route::delete('/transaction-delete/{id}', [TransactionController::class,'delete'])->name('transaction.delete');
    Route::get('/transaction/laporan', [TransactionController::class,'laporan'])->name('transaction.laporan');
    Route::get('/transaction/print',[TransactionController::class, 'print'])->name('transaction.print');
    Route::get('/transaction/filter', [TransactionController::class, 'filter'])->name('transaction.filter');

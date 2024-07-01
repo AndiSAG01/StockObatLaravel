@@ -37,37 +37,24 @@
                 <td>{{ $mb->kode }}</td>
                 <td>{{ $mb->supplier->name }}</td>
                 <td>{{ strtoupper($mb->name) }}</td>
-                {{-- <td>
-                  @if ($mb->stok == 0)
-                      <a href="#" class="btn btn-danger">Stok Habis</a>
-                  @elseif ($mb->stok < 11)
-                      <a href="#" class="btn btn-warning">{{ $mb->stok }}</a>
-                  @else
-                      {{ $mb->stok }}
-                  @endif
-              </td>               --}}
+             
                 <td>{{ $mb->brand->name }}</td>
                 <td>{{ $mb->type->name }}</td>
                 <td>{{ $mb->satuan->name }}</td>
                 <td>{{ $mb->description }}</td>
                 <td>
                     <a href="{{ route('medicines.edit', $mb->id ) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                    <form id="deleteForm" class="d-inline" action="{{ route('medicines.delete',$mb->id) }}" method="post">
+                    <form id="deleteForm{{ $mb->id }}" class="d-inline" action="{{ route('medicines.delete',$mb->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $mb->id }})"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
         </table>
-        {{-- <p>Keterangan :</p>
-        <span><b>STOK MENIPIS</b></span> = <a href="" class="btn btn-warning"></a>
-        <p>
-          <span><b>STOK HABIS</b></span> = <a href="" class="btn btn-danger"></a>
-        </p>
-      </div> --}}
+
     </div>
   </div>
 @endsection

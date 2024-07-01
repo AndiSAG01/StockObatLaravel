@@ -117,6 +117,13 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
+        <script>
+            function confirmDelete(id) {
+                if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                    document.getElementById('deleteForm' + id).submit();
+                }
+            }
+            </script>
 
         <script src="/assets/vendor/jquery/jquery.min.js"></script>
         <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -125,6 +132,13 @@
         <script src="/assets/vendor/chart.js/Chart.min.js"></script>
         <script src="/assets/js/demo/chart-area-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.2/dist/sweetalert2.all.min.js"></script>
+        {{-- <script>
+            function confirmDelete(id) {
+                if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                    document.getElementById('deleteForm' + id).submit();
+                }
+            }
+            </script> --}}
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 @if (session('danger'))
@@ -138,22 +152,22 @@
                 @endif
             });
 
-            function confirmDelete() {
-                Swal.fire({
-                    title: 'Are you sure',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // If the user clicks "Yes," submit the form
-                        document.getElementById('deleteForm').submit();
-                    }
-                });
-            }
+            function confirmDelete(id) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // If the user clicks "Yes," submit the form
+            document.getElementById('deleteForm' + id).submit();
+        }
+    });
+}
         </script>
         <script>
             function getObatDetails() {
